@@ -1,9 +1,11 @@
 .content {
-    background-color: black;
-    height: 100em;
+   
+    padding-top: 3%;
+    font-family: Oswald, sans-serif;
+    text-shadow: 1px 1px 1px #16a085, 1px 1px 4px #2980b9;
+    text-align: center;
     color: white;
-    
-    padding: 20px;
+    background-color: black;
 }
 
 .logo {
@@ -11,20 +13,6 @@
     height: 32px;
     margin: 0;
     padding: 0;
-
-}
-
-.text-content {
-    display: block;
-    text-align: center;
-    
-}
-
-.search-h1 {
-    margin: 0 auto;
-    font-size: 2em;
-    text-align: center;
-    
 }
 
 .search-sity {
@@ -33,25 +21,28 @@
     margin: 0 auto;
 }
 
-
 .form-control::placeholder {
     color: gray;
-  }
-  
+}
 
-.container-map {
-    margin-top: 40px;
+
+.video-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    justify-content: space-between;
+    background-color: black;
+   
 }
 
-.container-map>iframe {
-    width: 100%;
-    height: 60svh;
+#myVideo {
+    position:inherit;
+    width: 100%; 
+    height: 100%;
+    
+    
 }
 
-.img-fluid {
-    width: 70%;
+.container-all {
+    position: relative;
+    overflow: hidden;
+    background-color:black;
 }
