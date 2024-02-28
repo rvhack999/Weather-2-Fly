@@ -1,58 +1,41 @@
-from django.http import HttpResponseNotFound, Http404
+from django.http import HttpResponseNotFound, Http404, HttpResponse
 from django.shortcuts import render
-from .functions import weather_today
+from .functions import get_weather
 from .models import Day
-from . import forms
 
-
-
-# Create your views here.
-# def index(request):
-#     if request.method == 'POST':
-#         form = forms.RequestCords(request.POST)
-#         if form.is_valid():
-#             print(form.cleaned_data)
-#     else:
-#         form = forms.RequestCords()
-#
-#     data = {
-#         'title': 'Weather-2-Fly',
-#         'form': form
-#     }
-#     return render(request, 'main/main.html', data)
 
 def home(request):
     data = {
         'title': 'Weather-2-Fly',
-
     }
-    update = weather_today(52.9179381485359, 103.56901371781483, 0)
-    b = [i for i in update[1].values()]
-    a = Day
-    a.date = update[0].split()[0]
-    a.time = update[0].split()[1]
-    a.temperature_2m = b[0]
-    a.temperature_120m = b[1]
-    a.relative_humidity_2m = b[2]
-    a.precipitation_probability = b[3]
-    a.visibility = b[4]
-    a.wind_speed_10m = b[5]
-    a.wind_direction_10m = b[6]
-    a.wind_gusts_10m = b[7]
-    a.wind_speed_120m = b[8]
-    a.wind_direction_120m = b[9]
-    a.save()
-
-
     return render(request, 'main/main.html', data)
 
 
 def weather_now(request):
-
     data = {
         'title': 'Weather-now',
-
     }
+    if request.POST:
+        latitude = request.POST.get("lat", "Undefined")
+        longitude = request.POST.get("lon", "Undefined")
+        weather_data = get_weather(latitude=latitude, longitude=longitude, days=1)
+        for date_time in weather_data.keys():
+            weather = Day()
+            weather.date = date_time.split()[0]
+            weather.time = date_time.split()[1]
+            weather.temperature_2m = weather_data[date_time][0]
+            weather.temperature_120m = weather_data[date_time][1]
+            weather.relative_humidity_2m = weather_data[date_time][2]
+            weather.precipitation_probability = weather_data[date_time][3]
+            weather.visibility = weather_data[date_time][4]
+            weather.wind_speed_10m = weather_data[date_time][5]
+            weather.wind_direction_10m = weather_data[date_time][6]
+            weather.wind_gusts_10m = weather_data[date_time][7]
+            weather.wind_speed_120m = weather_data[date_time][8]
+            weather.wind_direction_120m = weather_data[date_time][9]
+            weather.save()
+            # print(weather.time, weather_data[date_time])
+
     return render(request, 'main/weather_now.html', data)
 
 

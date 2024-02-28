@@ -11,22 +11,7 @@
         <source class="video-back" src="{% static 'main/vid/ШОК!Самый сексуальный  прогноз погоды))Смотреть всем.webm' %}" type="video/webm">
 
       </video>
-      <section class="content">
-        <div id="input-text">
-          <h1 class="search-h1">Введите координаты:</h1>
-          <p>Координаты можно получить из карт</p>
-        </div>
-
-        <form class="search-sity" role="search" action="" method="POST">
-          {% csrf_token %}
-          <input type="text" class="form-control form-control-dark text-bg-dark" placeholder="latitude" aria-label="Search" style="text-align: center;" name="lat">
-          <p></p>
-          <input type="text" class="form-control form-control-dark text-bg-dark" placeholder="longitude" aria-label="Search" style="text-align: center;" name="lon">
-          <p></p>
-          <button type="submit" class="btn btn-primary"><h5> Показать погоду </h5></button>
-        </form>
-
-      </section>
+      
     </div>
 
 </div>

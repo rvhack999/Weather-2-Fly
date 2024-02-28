@@ -3,5 +3,20 @@
 
 
 {% block content %}
-jshlkdagflj
-{% endblock %}
+<div class="content">
+    <div id="input-text">
+      <h1 class="search-h1">Введите координаты:</h1>
+      <p>Координаты можно получить из карт</p>
+    </div>
+
+    <form class="search-sity" role="search" action="" method="POST">
+      {% csrf_token %}
+      <input required type="text" class="form-control form-control-dark text-bg-dark" placeholder="latitude" aria-label="Search" style="text-align: center;" name="lat">
+      <p></p>
+      <input required type="text" class="form-control form-control-dark text-bg-dark" placeholder="longitude" aria-label="Search" style="text-align: center;" name="lon">
+      <p></p>
+      <button type="submit" class="btn btn-primary" value="send"><h5> Показать погоду </h5></button>
+    </form>
+
+</div>
+{% endblock %}  

@@ -1,5 +1,6 @@
 <!doctype html>
 {% load static %}
+
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -22,9 +23,8 @@
                 </a>
 
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                  <li><a href="{% url 'weather_now' %}" class="nav-link px-2 text-white">Погода сейчас</a></li>
-                  <li><a href="{% url 'weather_7days' %}" class="nav-link px-2 text-white">Погода на 7 дней</a></li>
-                  <li><a href="{% url 'about' %}" class="nav-link px-2 text-white">О приложении</a></li>
+                    <li><a href="{% url 'about' %}" class="nav-link px-2 text-white">О приложении</a></li>
+                    <li><a href="{% url 'weather_now' %}" class="nav-link px-2 text-white">Показать лучшее время для полетов</a></li>
                 </ul>
 
 
